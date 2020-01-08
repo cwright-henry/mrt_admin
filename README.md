@@ -1,4 +1,4 @@
-# mrt
+# mrt admin
 
 ## Project setup
 ```
