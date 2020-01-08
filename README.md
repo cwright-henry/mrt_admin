@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# mrt_admin
+# mrt
 
 ## Project setup
 ```
@@ -16,18 +15,7 @@ yarn run serve
 yarn run build
 ```
 
-### Run your tests
-```
-yarn run test
-```
-
 ### Lints and fixes files
 ```
 yarn run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-=======
-# mrt_admin
->>>>>>> refs/remotes/mrt_admin/master
