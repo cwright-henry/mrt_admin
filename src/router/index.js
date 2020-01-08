@@ -1,29 +1,85 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Router from 'vue-router'
+import store from '@/store'
 
-Vue.use(VueRouter)
+import Login from '@/views/login/Login'
+import App from '@/views/application/App'
+import Users from '@/views/users/Router'
+import UserList from '@/views/users/UserList'
+import User from '@/views/users/user/User'
+import TickerList from '@/views/tickers/TickerList'
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+Vue.use(Router)
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+export default new Router({
+	mode: 'history',
+	base: process.env.BASE_URL,
+	scrollBehavior(to, from, savedPosition) {
+		let position = { x: 0, y: 0 };
+		if (savedPosition) {
+			position = savedPosition
+		}
+
+		return new Promise((resolve) => {
+			setTimeout(() => {
+				resolve(position)
+			}, 300)
+		})
+	},
+	routes: [
+		{
+			path: '/',
+			name: 'admin',
+			component: App,
+			redirect: '/users',
+			beforeEnter(to, from, next) {
+				store.commit('login/initialize');
+				if (!store.getters['login/isAuthenticated']) {
+					next('/login')
+				}
+				else {
+					next()
+				}
+			},
+			children: [
+				{
+					path: 'users',
+					component: Users,
+					children: [
+						{
+							path: '',
+							name: 'UserList',
+							component: UserList,
+							meta: {
+								transitionName: 'slide'
+							}
+						},
+						{
+							path: ':id',
+							name: 'UserDetails',
+							component: User,
+							props: (route) => ({ userId: route.params.id }),
+							meta: {
+								transitionName: 'slide'
+							}
+						},
+					]
+				},
+				{
+					path: 'tickers',
+					name: 'Tickers',
+					component: TickerList
+				}
+			]
+		},
+		{
+			path: '/login',
+			name: 'login',
+			component: Login
+		},
+		{
+			path: '*',
+			redirect: '/'
+		}
+	]
 })
-
-export default router
