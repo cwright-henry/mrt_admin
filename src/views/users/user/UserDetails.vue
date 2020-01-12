@@ -124,4 +124,22 @@ export default {
 		}
 	}
 }
+@media screen and (max-width: 600px) {
+	.mrt-admin--details {
+		.mrt-admin--details-user {
+			width: 100%;
+			.mrt-admin--info {
+				flex-direction: column;
+				align-items: flex-start;
+				label {
+					margin: 0 0 4px;
+					font-size: 13px;
+				}
+				.v-input {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
 </style>

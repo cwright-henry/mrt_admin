@@ -1,5 +1,5 @@
 <template>
-	<v-navigation-drawer permanent app class="mrt-admin--navigation">
+	<v-navigation-drawer v-model="navigationToggle" fixed app class="mrt-admin--navigation">
 		<v-list dense>
 			<div class="logo">
 				<img src="@/assets/logo.svg" height="98" />
@@ -26,15 +26,17 @@
 </template>
 
 <script>
+import EventBus from "@/events";
 export default {
 	data() {
 		return {
-			items: [
-				{ title: "Users", icon: "mdi-view-dashboard" },
-				{ title: "Dictionary", icon: "mdi-image" }
-			],
-			right: null
+			navigationToggle: false
 		};
+	},
+	mounted() {
+		EventBus.$on("toggleNavigation", () => {
+			this.navigationToggle = !this.navigationToggle;
+		});
 	},
 	methods: {
 		async logout() {

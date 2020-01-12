@@ -1,5 +1,5 @@
 <template>
-	<v-dialog v-model="dialog" width="600">
+	<v-dialog v-model="dialog" width="500" :fullscreen="$vuetify.breakpoint.smAndDown">
 		<template v-slot:activator="{ on }">
 			<v-btn bottom right fixed color="primary" v-on="on" fab>
 				<v-icon>mdi-playlist-plus</v-icon>
@@ -8,6 +8,10 @@
 		<v-card class="mrt-admin--new-user">
 			<v-card-title class="headline grey">
 				<v-icon size="28" color="#fff">mdi-account</v-icon>New Ticker
+				<v-spacer></v-spacer>
+				<v-btn icon @click.stop="dialog=false">
+					<v-icon>mdi-close</v-icon>
+				</v-btn>
 			</v-card-title>
 			<v-card-text class="mt-4">
 				<div class="mrt-admin--info">

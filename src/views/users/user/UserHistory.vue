@@ -168,6 +168,7 @@ export default {
 	.mrt-admin--login-details {
 		display: flex;
 		justify-content: space-between;
+		flex-wrap: wrap;
 		section {
 			padding: 0;
 			background-color: transparent;
@@ -176,15 +177,18 @@ export default {
 				font-weight: 400;
 				font-size: 14px;
 				text-transform: uppercase;
-				margin: 0 0 8px 0;
+				margin: 0 0 6px 0;
 			}
 			ul li {
 				display: flex;
-				margin: 0 0 4px 0;
+				align-items: center;
+				margin: 0 0 6px 0;
+				overflow: hidden;
 				label {
-					width: 90px;
+					min-width: 70px;
 					color: #e0e0e0;
 					font-weight: 300;
+					font-size:13px;
 				}
 				> div {
 					span:first-child {
@@ -200,6 +204,32 @@ export default {
 		align-items: center;
 		height: 100px;
 		color: #757575;
+	}
+}
+@media screen and (max-width: 600px) {
+	.mrt-admin--details-history {
+		h1 {
+			font-size: 16px;
+		}
+		.mrt-admin--login-details {
+			flex-direction: column;
+			section {
+				width: 100%;
+				overflow: hidden;
+				h2 {
+					display: none;
+				}
+				ul li {
+					display: flex;
+					margin: 0 0 4px 0;
+					label {
+						width: 90px;
+						color: #e0e0e0;
+						font-weight: 300;
+					}
+				}
+			}
+		}
 	}
 }
 </style>

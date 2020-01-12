@@ -1,5 +1,6 @@
 <template>
 	<v-app-bar app class="mrt-admin--appbar">
+		<v-app-bar-nav-icon @click.stop="toggleNavigation"></v-app-bar-nav-icon>
 		<h1>MRT Administration</h1>
 		<v-spacer></v-spacer>
 		<div class="user">
@@ -13,6 +14,8 @@
 </template>
 
 <script>
+import EventBus from "@/events";
+
 export default {
 	computed: {
 		userName() {
@@ -20,6 +23,11 @@ export default {
 		},
 		companyName() {
 			return this.$store.state.login.user.companyName;
+		}
+	},
+	methods: {
+		toggleNavigation() {
+			EventBus.$emit("toggleNavigation");
 		}
 	}
 };
@@ -48,6 +56,13 @@ export default {
 				color: #fff176;
 				font-weight: 300;
 			}
+		}
+	}
+}
+@media screen and (max-width: 600px) {
+	.mrt-admin--appbar {
+		.user {
+			display: none;
 		}
 	}
 }

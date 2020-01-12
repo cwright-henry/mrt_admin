@@ -1,5 +1,5 @@
 <template>
-	<div class="mrt-admin--user pa-4">
+	<div class="mrt-admin--user pt-4">
 		<div class="loading" v-if="isLoading">
 			<v-progress-circular :size="60" :width="2" indeterminate color="#FFEB3B"></v-progress-circular>
 		</div>

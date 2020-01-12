@@ -1,7 +1,6 @@
 <template>
 	<v-app>
 		<mrt-navigation></mrt-navigation>
-
 		<mrt-appbar></mrt-appbar>
 
 		<!-- Sizes your content based upon application components -->

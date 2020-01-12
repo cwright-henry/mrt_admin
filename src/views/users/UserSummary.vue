@@ -100,4 +100,30 @@ export default {
 		width: 60px;
 	}
 }
+@media screen and (max-width: 600px) {
+	.mrt-admin--user-detail {
+		padding: 12px 8px;
+		.user-icon {
+			padding: 0 12px 0 0px;
+		}
+		.details {
+			ul li {
+				flex-direction: column;
+				align-items: flex-start;
+				margin: 0 0 12px;
+				label {
+					width: 100%;
+					font-size: 11px;
+				}
+				div {
+					word-break: break-all;
+					line-height: 1.1;
+				}
+			}
+		}
+		.link {
+			width: 20px;
+		}
+	}
+}
 </style>
