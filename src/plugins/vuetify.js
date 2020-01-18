@@ -9,6 +9,9 @@ export default new Vuetify({
 	},
 	theme: {
 		dark: true,
+		options: {
+			cspNonce: '1234567890abc',
+		},
 		themes: {
 			dark: {
 				primary: '#2196F3',			// Blue
